@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import brand from "../mdb.png";
 import styled from "styled-components";
+import i18next from "i18next";
 
 // Our Context
 import { Context } from "../Context";
+import { useTranslation } from "react-i18next";
 
 // Set the component to use in HOC schema
 const Root = ({ children, ...props }) => {
+  const { t } = useTranslation();
+
   /* By Consumer we can access the context data without prop drilling  */
   const data = useContext(Context);
 
@@ -17,7 +21,7 @@ const Root = ({ children, ...props }) => {
       <img src={brand} alt="MDB Brand" />
 
       <h1>{data.context.title}</h1>
-      <h3>By context</h3>
+      <h3>{t("byContext")}</h3>
 
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla
@@ -74,6 +78,14 @@ const Root = ({ children, ...props }) => {
         ultricies consequat quis vel dui. Duis a vestibulum tortor, at blandit
         mauris. Nullam sit amet pharetra elit, nec posuere magna.
       </p>
+
+      <select
+        value={i18next.language}
+        onChange={event => i18next.changeLanguage(event.target.value)}
+      >
+        <option value={"en"}>English</option>
+        <option value={"pt-BR"}>Português do Brasil</option>
+      </select>
     </Container>
   );
 };

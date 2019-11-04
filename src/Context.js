@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { ThemeProvider } from "styled-components";
+import i18next from "i18next";
 
 // Make our initial Context and providing our data with async call
 
@@ -21,10 +22,16 @@ export class Provider extends React.Component {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/todos/1"
     );
-    this.setState({
-      status: "done",
-      context: response.data
-    });
+
+    this.setState(
+      {
+        status: "done",
+        context: response.data
+      },
+      () => {
+        i18next.changeLanguage("en");
+      }
+    );
   };
 
   componentDidMount() {
