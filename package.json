@@ -6,12 +6,10 @@
     "react-scripts": "3.2.0"
   },
   "dependencies": {
-    "aphrodite": "^2.4.0",
     "axios": "^0.19.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-jss": "^10.0.0",
-    "react-sweet-state": "^1.1.1"
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
